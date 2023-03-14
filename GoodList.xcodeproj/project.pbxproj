@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		079785199C156B541D44AF2E /* Pods_GoodList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95B7F3F9A71AF5E809A2EAD /* Pods_GoodList.framework */; };
 		1FF9E57329C0AAF8008377A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9E57229C0AAF8008377A5 /* AppDelegate.swift */; };
 		1FF9E57529C0AAF8008377A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9E57429C0AAF8008377A5 /* SceneDelegate.swift */; };
 		1FF9E57A29C0AAF8008377A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF9E57829C0AAF8008377A5 /* Main.storyboard */; };
@@ -28,6 +29,9 @@
 		1FF9E58729C0AB94008377A5 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		1FF9E58929C0B060008377A5 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		1FF9E58C29C0B1C0008377A5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		B4EC1B318634182D2E9A55D3 /* Pods-GoodList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodList.release.xcconfig"; path = "Target Support Files/Pods-GoodList/Pods-GoodList.release.xcconfig"; sourceTree = "<group>"; };
+		B95B7F3F9A71AF5E809A2EAD /* Pods_GoodList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEBF70FE2C0DA8A4C39CBF2A /* Pods-GoodList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodList.debug.xcconfig"; path = "Target Support Files/Pods-GoodList/Pods-GoodList.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079785199C156B541D44AF2E /* Pods_GoodList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +51,8 @@
 			children = (
 				1FF9E57129C0AAF8008377A5 /* GoodList */,
 				1FF9E57029C0AAF8008377A5 /* Products */,
+				9C10DC478D19CCD03F007C62 /* Pods */,
+				AB552D55BE0DD1D198746218 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +96,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		9C10DC478D19CCD03F007C62 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BEBF70FE2C0DA8A4C39CBF2A /* Pods-GoodList.debug.xcconfig */,
+				B4EC1B318634182D2E9A55D3 /* Pods-GoodList.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AB552D55BE0DD1D198746218 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B95B7F3F9A71AF5E809A2EAD /* Pods_GoodList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -96,9 +121,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FF9E58329C0AAFC008377A5 /* Build configuration list for PBXNativeTarget "GoodList" */;
 			buildPhases = (
+				8D5F77BF83CEB7CEB4C7B6AD /* [CP] Check Pods Manifest.lock */,
 				1FF9E56B29C0AAF8008377A5 /* Sources */,
 				1FF9E56C29C0AAF8008377A5 /* Frameworks */,
 				1FF9E56D29C0AAF8008377A5 /* Resources */,
+				F157CBF3CE6C8B5B376A89D4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +181,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8D5F77BF83CEB7CEB4C7B6AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodList-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F157CBF3CE6C8B5B376A89D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodList/Pods-GoodList-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodList/Pods-GoodList-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodList/Pods-GoodList-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1FF9E56B29C0AAF8008377A5 /* Sources */ = {
@@ -308,6 +377,7 @@
 		};
 		1FF9E58429C0AAFC008377A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEBF70FE2C0DA8A4C39CBF2A /* Pods-GoodList.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -336,6 +406,7 @@
 		};
 		1FF9E58529C0AAFC008377A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4EC1B318634182D2E9A55D3 /* Pods-GoodList.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
