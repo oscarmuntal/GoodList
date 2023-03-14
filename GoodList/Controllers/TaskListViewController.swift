@@ -7,10 +7,11 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class TaskListViewController: UIViewController {
     let disposeBag = DisposeBag()
-    private var tasks = Variable<[Task]>([])
+    private var tasks = BehaviorRelay<[Task]>(value: [])
     
     @IBOutlet weak var prioritySegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -29,7 +30,7 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return tasks.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,7 +45,9 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         
         addTaskVC.taskSubjectObservable
             .subscribe(onNext: { task in
-                self.tasks.value.append(task)
+                var existingTasks = self.tasks.value
+                existingTasks.append(task)
+                self.tasks.accept(existingTasks)
             }).disposed(by: disposeBag)
     }
 }
