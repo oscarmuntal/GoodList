@@ -13,8 +13,13 @@ class TaskListViewController: UIViewController {
     let disposeBag = DisposeBag()
     private var tasks = BehaviorRelay<[Task]>(value: [])
     private var filteredTasks = [Task]()
+    
     @IBOutlet weak var prioritySegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBAction func priorityValueChanged(segmentedControl: UISegmentedControl) {
+        let priority = Priority(rawValue: segmentedControl.selectedSegmentIndex - 1)
+        filterTasks(by: priority)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
