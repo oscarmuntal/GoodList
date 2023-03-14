@@ -71,17 +71,44 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="124.55357142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Task-->
         <scene sceneID="xKp-4c-o1m">
             <objects>
-                <viewController id="y1e-Rw-0GX" sceneMemberID="viewController">
+                <viewController id="y1e-Rw-0GX" customClass="AddTaskViewController" customModule="GoodList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5I1-ij-X0G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oiq-KD-KBi">
+                                <rect key="frame" x="104" y="78" width="206" height="32"/>
+                                <segments>
+                                    <segment title="High"/>
+                                    <segment title="Medium"/>
+                                    <segment title="Low"/>
+                                </segments>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SN2-eb-tuD">
+                                <rect key="frame" x="82" y="432" width="250" height="34"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="zos-Yr-6ct"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qKJ-Bz-gPe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oiq-KD-KBi" firstAttribute="top" secondItem="qKJ-Bz-gPe" secondAttribute="top" constant="22" id="5pa-Bw-iGn"/>
+                            <constraint firstItem="SN2-eb-tuD" firstAttribute="centerX" secondItem="qKJ-Bz-gPe" secondAttribute="centerX" id="JiC-Pe-jud"/>
+                            <constraint firstItem="oiq-KD-KBi" firstAttribute="centerX" secondItem="qKJ-Bz-gPe" secondAttribute="centerX" id="jio-l6-8ss"/>
+                            <constraint firstItem="SN2-eb-tuD" firstAttribute="centerY" secondItem="qKJ-Bz-gPe" secondAttribute="centerY" id="nMV-1T-edy"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="f6d-6R-WGT"/>
+                    <navigationItem key="navigationItem" title="Add Task" id="f6d-6R-WGT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rhu-1D-O32"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKF-U5-cRA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,6 +154,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
