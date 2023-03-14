@@ -21,11 +21,8 @@ class AddTaskViewController: UIViewController {
     @IBAction func save() {
         guard let priority = Priority(rawValue: prioritySegmentedControl.selectedSegmentIndex),
               let title = taskTitleTextField.text else { return }
-        
         let task = Task(title: title, priority: priority)
-        taskSubject.onNext(task)    // sending the task we've created to the subject
-        // whoever is subscribed to this subject will the this particular task
-        
+        taskSubject.onNext(task)
         dismiss(animated: true, completion: nil)
     }
 }
