@@ -29,18 +29,13 @@ class TaskListViewController: UIViewController {
 }
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.value.count
+        return filteredTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath)
-        
+        cell.textLabel?.text = filteredTasks[indexPath.row].title
         return cell
     }
     
@@ -62,14 +57,22 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         // Case: All
         if priority == nil {
             self.filteredTasks = self.tasks.value
+            updateTableView()
         } else {
             // Cases: High, Medium and Low
             self.tasks.map { tasks in
                 tasks.filter { $0.priority == priority! }
             }.subscribe(onNext:{ [weak self] tasks in
                 self?.filteredTasks = tasks
-                print(tasks)
+                self?.updateTableView()
             }).disposed(by: disposeBag)
+        }
+        tableView.reloadData()
+    }
+    
+    private func updateTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 }
