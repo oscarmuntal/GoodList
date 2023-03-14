@@ -25,7 +25,6 @@ class TaskListViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
 }
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -52,25 +51,24 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
                 self.filterTasks(by: priority)
             }).disposed(by: disposeBag)
     }
-    
-    private func filterTasks(by priority: Priority?) {
-        // Case: All
-        if priority == nil {
-            self.filteredTasks = self.tasks.value
-            updateTableView()
-        } else {
-            // Cases: High, Medium and Low
+}
+ 
+private extension TaskListViewController {
+    func filterTasks(by priority: Priority?) {
+        if let priority = priority {
             self.tasks.map { tasks in
-                tasks.filter { $0.priority == priority! }
+                tasks.filter { $0.priority == priority }
             }.subscribe(onNext:{ [weak self] tasks in
                 self?.filteredTasks = tasks
                 self?.updateTableView()
             }).disposed(by: disposeBag)
+        } else {
+            self.filteredTasks = self.tasks.value
+            updateTableView()
         }
-        tableView.reloadData()
     }
     
-    private func updateTableView() {
+    func updateTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
